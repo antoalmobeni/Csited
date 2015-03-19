@@ -20,7 +20,7 @@
             <StackPanel VerticalAlignment="Top" Grid.Row="0" Orientation="Vertical">
                 <Image Source="csited.jpg" Stretch="Fill" Height="118" Margin="0,0,54,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
             </StackPanel>
-            <ListBox x:Name="ScenarioControl" Grid.Row="1" SelectionChanged="ScenarioControl_SelectionChanged"
+            <ListBox x:ConnectionId='1' x:Name="ScenarioControl" Grid.Row="1"                                                    
                      SelectionMode="Single" HorizontalAlignment="Left"
                      VerticalAlignment="Top"/>
 
@@ -30,3 +30,4 @@
 
     </Grid>
 </Page>
+

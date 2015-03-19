@@ -12,9 +12,8 @@ namespace Windows {
     namespace UI {
         namespace Xaml {
             namespace Controls {
-                ref class Grid;
-                ref class Frame;
-                ref class ListBox;
+                ref class Button;
+                ref class TextBlock;
             }
         }
     }
@@ -22,7 +21,7 @@ namespace Windows {
 
 namespace App1
 {
-    partial ref class MainPage : public ::Windows::UI::Xaml::Controls::Page, 
+    partial ref class Profile : public ::Windows::UI::Xaml::Controls::Page, 
         public ::Windows::UI::Xaml::Markup::IComponentConnector
     {
     public:
@@ -32,9 +31,8 @@ namespace App1
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::Grid^ LeftPane;
-        private: ::Windows::UI::Xaml::Controls::Frame^ ScenarioFrame;
-        private: ::Windows::UI::Xaml::Controls::ListBox^ ScenarioControl;
+        private: ::Windows::UI::Xaml::Controls::Button^ backButton;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ pageTitle;
     };
 }
 
