@@ -12,10 +12,12 @@
 #include "App.xaml.h"
 #include "MainPage.xaml.h"
 #include "Profile.xaml.h"
+#include "Synchronization.xaml.h"
 
 #include "App.g.hpp"
 #include "MainPage.g.hpp"
 #include "Profile.g.hpp"
+#include "Synchronization.g.hpp"
 
 ::Platform::Collections::Vector<::Windows::UI::Xaml::Markup::IXamlMetadataProvider^>^ ::XamlTypeInfo::InfoProvider::XamlTypeInfoProvider::OtherProviders::get()
 {
@@ -136,6 +138,19 @@
                 collection->Insert(newKey, newItem);
             };
         userType->SetIsReturnTypeStub();
+        return userType;
+    }
+
+    if (typeName == L"App1.Synchronization")
+    {
+        ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Windows.UI.Xaml.Controls.Page"));
+        userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
+        userType->Activator =
+            []() -> Platform::Object^ 
+            {
+                return ref new ::App1::Synchronization(); 
+            };
+        userType->SetIsLocalType();
         return userType;
     }
 

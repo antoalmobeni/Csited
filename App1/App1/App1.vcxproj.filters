@@ -38,6 +38,7 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="SampleConfiguracion.cpp" />
+    <ClCompile Include="Profile.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -53,6 +54,7 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="SampleConfiguration.h" />
+    <ClInclude Include="Profile.xaml.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -64,6 +66,7 @@
     <Page Include="MainPage.xaml" />
     <Page Include="Profile.xaml" />
     <Page Include="Styles.xaml" />
+    <Page Include="Synchronization.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\csited.jpg">

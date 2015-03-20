@@ -12,13 +12,17 @@
             <ColumnDefinition Width="2*"  MinWidth="230" MaxWidth="600"/>
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="LeftPane" Background="White" Grid.Column="0" Margin="10,28,0,10">
+        <Grid x:Name="LeftPane" Background="White" Grid.Column="0" Margin="10,28,57,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="115"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel VerticalAlignment="Top" Grid.Row="0" Orientation="Vertical">
-                <Image Source="csited.jpg" Stretch="Fill" Height="118" Margin="0,0,54,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                <Image Source="csited.jpg" Stretch="Fill" Height="118" VerticalAlignment="Top" HorizontalAlignment="Left" Width="206" >
+                    <Image.Projection>
+                        <PlaneProjection/>
+                    </Image.Projection>
+                </Image>
             </StackPanel>
             <ListBox x:Name="ScenarioControl" Grid.Row="1" SelectionChanged="ScenarioControl_SelectionChanged"
                      SelectionMode="Single" HorizontalAlignment="Left"
@@ -26,7 +30,7 @@
 
 
         </Grid>
-        <Frame Grid.Column="1" x:Name="ScenarioFrame" Margin="10,28,10,10" Background="#FFF7F7F7" />
+        <Frame x:Name="ScenarioFrame" Margin="234,28,10,10" Background="#FFF7F7F7" Grid.ColumnSpan="2" />
 
     </Grid>
 </Page>

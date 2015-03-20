@@ -145,6 +145,9 @@
       <DependentUpon>Profile.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="SampleConfiguration.h" />
+    <ClInclude Include="Synchronization.xaml.h">
+      <DependentUpon>Synchronization.xaml</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -158,6 +161,9 @@
     </Page>
     <Page Include="Styles.xaml">
       <DeploymentContent>true</DeploymentContent>
+    </Page>
+    <Page Include="Synchronization.xaml">
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +201,9 @@
       <DependentUpon>Profile.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="SampleConfiguracion.cpp" />
+    <ClCompile Include="Synchronization.xaml.cpp">
+      <DependentUpon>Synchronization.xaml</DependentUpon>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

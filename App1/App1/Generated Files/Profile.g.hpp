@@ -22,14 +22,17 @@ void ::App1::Profile::InitializeComponent()
     // Call LoadComponent on ms-appx:///Profile.xaml
     ::Windows::UI::Xaml::Application::LoadComponent(this, ref new ::Windows::Foundation::Uri(L"ms-appx:///Profile.xaml"), ::Windows::UI::Xaml::Controls::Primitives::ComponentResourceLocation::Application);
 
-    // Get the Button named 'backButton'
-    backButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"backButton"));
-    // Get the TextBlock named 'pageTitle'
-    pageTitle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"pageTitle"));
 }
 
 void ::App1::Profile::Connect(int connectionId, Platform::Object^ target)
 {
+    switch (connectionId)
+    {
+    case 1:
+        (safe_cast<::Windows::UI::Xaml::UIElement^>(target))->DoubleTapped +=
+            ref new ::Windows::UI::Xaml::Input::DoubleTappedEventHandler(this, (void (::App1::Profile::*)(Platform::Object^, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^))&Profile::GetPhotoDoubleTapped);
+        break;
+    }
     (void)connectionId; // Unused parameter
     (void)target; // Unused parameter
     _contentLoaded = true;

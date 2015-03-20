@@ -11,7 +11,7 @@
 
 namespace App1
 {
-    partial ref class Profile : public ::Windows::UI::Xaml::Controls::Page, 
+    partial ref class Synchronization : public ::Windows::UI::Xaml::Controls::Page, 
         public ::Windows::UI::Xaml::Markup::IComponentConnector
     {
     public:
