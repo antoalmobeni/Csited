@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="68cd329c-1cb5-49c6-b498-7f17f61d5694" Publisher="CN=antonio" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>Csited</DisplayName>
+    <PublisherDisplayName>antonio</PublisherDisplayName>
+    <Logo>Assets\Csited.jpg</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Csited.App">
+      <m2:VisualElements DisplayName="Csited" Square150x150Logo="csited.jpg" Square30x30Logo="Assets\SmallLogo.png" Description="Csited" ForegroundText="light" BackgroundColor="#464646">
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="picturesLibrary" />
+  </Capabilities>
+</Package>

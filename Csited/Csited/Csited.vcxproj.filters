@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>cf487841-6d77-4bd6-80cc-b1183e89a4f7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>5e6ab7eb-320b-41b2-a862-a2df896078c9</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Filter Include="DataModel">
+      <UniqueIdentifier>156e14b1-48e0-4770-8d86-91cd4aaa293a</UniqueIdentifier>
+    </Filter>
+    <None Include="Common\ReadMe.txt">
+      <Filter>Common</Filter>
+    </None>
+    <ClCompile Include="Common\NavigationHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\RelayCommand.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\SuspensionManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClInclude Include="Common\NavigationHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\RelayCommand.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\SuspensionManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <Image Include="Assets\Logo.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\LightGray.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\MediumGray.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\DarkGray.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <ClCompile Include="DataModel\SampleDataSource.cpp">
+      <Filter>DataModel</Filter>
+    </ClCompile>
+    <ClInclude Include="DataModel\SampleDataSource.h">
+      <Filter>DataModel</Filter>
+    </ClInclude>
+    <Text Include="DataModel\SampleData.json">
+      <Filter>DataModel</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.xaml.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="SampleConfiguracion.cpp" />
+    <ClCompile Include="MainPage.xaml.cpp" />
+    <ClCompile Include="Profile.xaml.cpp" />
+    <ClCompile Include="Sync.xaml.cpp" />
+    <ClCompile Include="Environment.xaml.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="App.xaml.h" />
+    <ClInclude Include="SampleConfiguration.h" />
+    <ClInclude Include="MainPage.xaml.h" />
+    <ClInclude Include="Profile.xaml.h" />
+    <ClInclude Include="Sync.xaml.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Environment.xaml.h" />
+    <ClInclude Include="entorno.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Csited_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainPage.xaml" />
+    <Page Include="Profile.xaml" />
+    <Page Include="Styles.xaml" />
+    <Page Include="Sync.xaml" />
+    <Page Include="Environment.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Csited.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\csited.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Icon1.ico" />
+    <Image Include="Assets\csited.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\reloj.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Entorno-Casa-Cuadro-Azul.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Entorno-Trabajo-Cuadro-Azul.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Impresora-Cuadro-Azul.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Raton-Cuadro-Azul.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Teclado-Cuadro-Azul.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

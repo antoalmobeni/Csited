@@ -1,0 +1,53 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="Csited.MainPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Csited"
+    xmlns:common="using:Csited.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
+    RequestedTheme="Light">
+
+    <Page.Resources>
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Background="#29bdef">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"  MinWidth="230" MaxWidth="600"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="LeftPane" Background="White" Grid.Column="0" Margin="10,28,10,10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Top" Grid.Row="0" Orientation="Vertical" Height="115">
+                <Image Source="Assets/csited.jpg" Stretch="Fill" Height="122" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233"  Margin="10,0,0,0" >
+                  
+                </Image>
+            </StackPanel>
+            <ListBox x:ConnectionId='1' Style="{StaticResource ScenarioListBoxStyle}" x:Name="ScenarioControl" Grid.Row="1"                                                    
+                     SelectionMode="Single" HorizontalAlignment="Left"
+                     VerticalAlignment="Top" Margin="10,100,10,110" RequestedTheme="Light"   />
+
+
+        </Grid>
+
+        <Frame x:Name="ScenarioFrame" Margin="0,28,10,10" Background="White" Grid.Column="1">
+        </Frame>
+
+    </Grid>
+</Page>
+

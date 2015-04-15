@@ -22,6 +22,8 @@ void ::App1::Profile::InitializeComponent()
     // Call LoadComponent on ms-appx:///Profile.xaml
     ::Windows::UI::Xaml::Application::LoadComponent(this, ref new ::Windows::Foundation::Uri(L"ms-appx:///Profile.xaml"), ::Windows::UI::Xaml::Controls::Primitives::ComponentResourceLocation::Application);
 
+    // Get the ImageBrush named 'displayImage'
+    displayImage = safe_cast<::Windows::UI::Xaml::Media::ImageBrush^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"displayImage"));
 }
 
 void ::App1::Profile::Connect(int connectionId, Platform::Object^ target)
@@ -30,7 +32,11 @@ void ::App1::Profile::Connect(int connectionId, Platform::Object^ target)
     {
     case 1:
         (safe_cast<::Windows::UI::Xaml::UIElement^>(target))->DoubleTapped +=
-            ref new ::Windows::UI::Xaml::Input::DoubleTappedEventHandler(this, (void (::App1::Profile::*)(Platform::Object^, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^))&Profile::GetPhotoDoubleTapped);
+            ref new ::Windows::UI::Xaml::Input::DoubleTappedEventHandler(this, (void (::App1::Profile::*)(Platform::Object^, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^))&Profile::Ellipse_DoubleTapped);
+        break;
+    case 2:
+        (safe_cast<::Windows::UI::Xaml::Media::ImageBrush^>(target))->ImageOpened +=
+            ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::App1::Profile::*)(Platform::Object^, Windows::UI::Xaml::RoutedEventArgs^))&Profile::ImageBrush_ImageOpened);
         break;
     }
     (void)connectionId; // Unused parameter

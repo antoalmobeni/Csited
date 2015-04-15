@@ -8,6 +8,15 @@
 //     the code is regenerated.
 //------------------------------------------------------------------------------
 
+namespace Windows {
+    namespace UI {
+        namespace Xaml {
+            namespace Media {
+                ref class ImageBrush;
+            }
+        }
+    }
+}
 
 namespace App1
 {
@@ -21,6 +30,7 @@ namespace App1
     private:
         bool _contentLoaded;
     
+        private: ::Windows::UI::Xaml::Media::ImageBrush^ displayImage;
     };
 }
 

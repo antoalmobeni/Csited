@@ -1,0 +1,50 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="Csited.Profile"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Csited"
+    xmlns:common="using:Csited.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+   >
+
+    <Page.Resources>
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="451*"/>
+            <RowDefinition Height="177*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1000"/>
+            <ColumnDefinition Width="1000"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Fill="#29bdef" HorizontalAlignment="Left" Height="128" Margin="39,39,0,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="1168" Grid.ColumnSpan="2"/>
+        <Border BorderBrush="#a9dcf8" BorderThickness="15" HorizontalAlignment="Left" Height="415" Margin="39,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="846"/>
+
+        <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Left" Height="415" Margin="938,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="269" Background="#a9dcf8" Grid.ColumnSpan="2">
+            <!--<Image x:Name="displayImage" Source="Assets/csited.jpg" DoubleTapped="GetPhotoDoubleTapped" Stretch="Uniform" VerticalAlignment="Center" Width="100" Height="100">-->
+            <Ellipse>
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="displayImage" ImageSource="csited.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Border>
+        
+
+    </Grid>
+</Page>
+

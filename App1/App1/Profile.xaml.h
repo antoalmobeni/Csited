@@ -47,5 +47,10 @@ namespace App1
 		static Windows::UI::Xaml::DependencyProperty^ _defaultViewModelProperty;
 		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
 		void GetPhotoDoubleTapped(Platform::Object^ sender, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^ e);
+
+		//Variable que almacena el token devuelto por la MostRecentlyUsedLList
+		Platform::String^ mruToken;
+		void ImageBrush_ImageOpened(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Ellipse_DoubleTapped(Platform::Object^ sender, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^ e);
 	};
 }

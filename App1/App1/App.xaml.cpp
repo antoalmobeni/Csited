@@ -5,7 +5,7 @@
 
 #include "pch.h"
 #include "MainPage.xaml.h"
-
+#include "Common\SuspensionManager.h"
 using namespace App1;
 
 using namespace Platform;
@@ -60,6 +60,7 @@ void App::OnLaunched(Windows::ApplicationModel::Activation::LaunchActivatedEvent
 		// Create a Frame to act as the navigation context and associate it with
 		// a SuspensionManager key
 		rootFrame = ref new Frame();
+		App1::Common::SuspensionManager::RegisterFrame(rootFrame, "appFrame");
 
 		// Set the default language
 		rootFrame->Language = Windows::Globalization::ApplicationLanguages::Languages->GetAt(0);
