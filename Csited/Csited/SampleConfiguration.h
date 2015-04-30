@@ -18,6 +18,7 @@ namespace Csited
 	{
 		Platform::String^ Title;
 		Platform::String^ ClassName;
+		Platform::String^ _pathImage;
 	};
 
 	partial ref class MainPage

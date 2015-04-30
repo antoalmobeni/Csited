@@ -54,8 +54,8 @@ namespace Csited
 		static Windows::UI::Xaml::DependencyProperty^ _navigationHelperProperty;
 
 		void GetPhotoDoubleTapped(Platform::Object^ sender, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^ e);
-		void Guardar();
 	
 
+		void OnSuspending(Object^ sender, Windows::ApplicationModel::SuspendingEventArgs^ e);
 	};
 }

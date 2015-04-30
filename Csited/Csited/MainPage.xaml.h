@@ -60,5 +60,7 @@ namespace Csited
 		static MainPage^ Current;
 		Profile^ Pro;
 		void NotifyUser(Platform::String^ strMessage, NotifyType type);
+		void OnSuspending(Platform::Object^ sender, Windows::ApplicationModel::SuspendingEventArgs^ e);
+
 	};
 }

@@ -22,12 +22,31 @@ void ::Csited::Profile::InitializeComponent()
     // Call LoadComponent on ms-appx:///Profile.xaml
     ::Windows::UI::Xaml::Application::LoadComponent(this, ref new ::Windows::Foundation::Uri(L"ms-appx:///Profile.xaml"), ::Windows::UI::Xaml::Controls::Primitives::ComponentResourceLocation::Application);
 
-    // Get the ImageBrush named 'displayImage'
-    displayImage = safe_cast<::Windows::UI::Xaml::Media::ImageBrush^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"displayImage"));
+    // Get the Image named 'displayImage'
+    displayImage = safe_cast<::Windows::UI::Xaml::Controls::Image^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"displayImage"));
+    // Get the TextBox named 'nameUser'
+    nameUser = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"nameUser"));
+    // Get the TextBox named 'fechaNacimiento'
+    fechaNacimiento = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"fechaNacimiento"));
+    // Get the TextBox named 'ciudad'
+    ciudad = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"ciudad"));
+    // Get the TextBox named 'email'
+    email = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"email"));
+    // Get the TextBox named 'fechaCompra'
+    fechaCompra = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"fechaCompra"));
+    // Get the StackPanel named 'tusProductos'
+    tusProductos = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"tusProductos"));
 }
 
 void ::Csited::Profile::Connect(int connectionId, Platform::Object^ target)
 {
+    switch (connectionId)
+    {
+    case 1:
+        (safe_cast<::Windows::UI::Xaml::UIElement^>(target))->DoubleTapped +=
+            ref new ::Windows::UI::Xaml::Input::DoubleTappedEventHandler(this, (void (::Csited::Profile::*)(Platform::Object^, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^))&Profile::GetPhotoDoubleTapped);
+        break;
+    }
     (void)connectionId; // Unused parameter
     (void)target; // Unused parameter
     _contentLoaded = true;

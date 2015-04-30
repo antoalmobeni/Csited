@@ -171,15 +171,33 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\Contenido.png" />
     <Image Include="Assets\csited.jpg" />
     <Image Include="Assets\csited.png" />
+    <Image Include="Assets\Dispositivo.png" />
     <Image Include="Assets\Entorno-Casa-Cuadro-Azul.jpg" />
     <Image Include="Assets\Entorno-Trabajo-Cuadro-Azul.jpg" />
+    <Image Include="Assets\Entornos.png" />
+    <Image Include="Assets\Eventos.png" />
+    <Image Include="Assets\Icono-Csited-150.png" />
+    <Image Include="Assets\Icono-Csited-310.png" />
+    <Image Include="Assets\Icono-Dispositivo-asociado-Añadir.jpg" />
+    <Image Include="Assets\Icono-Dispositivo-asociado-Impresora.jpg" />
+    <Image Include="Assets\Icono-Dispositivo-asociado-Maletin.jpg" />
+    <Image Include="Assets\Icono-Dispositivo-asociado-Raton.jpg" />
+    <Image Include="Assets\Icono-Dispositivo-asociado-Teclado.jpg" />
+    <Image Include="Assets\Icono-Mas-Blanco.png" />
     <Image Include="Assets\Impresora-Cuadro-Azul.jpg" />
     <Image Include="Assets\Logo.scale-100.png" />
+    <Image Include="Assets\mapa.jpeg" />
+    <Image Include="Assets\Perfil.png" />
     <Image Include="Assets\Raton-Cuadro-Azul.jpg" />
     <Image Include="Assets\reloj.jpg" />
+    <Image Include="Assets\RW1-1.png" />
+    <Image Include="Assets\RW1-5.jpg" />
+    <Image Include="Assets\Sincronizacion.png" />
     <Image Include="Assets\SmallLogo.scale-100.png" />
+    <Image Include="Assets\Soporte.png" />
     <Image Include="Assets\StoreLogo.scale-100.png" />
     <Image Include="Assets\SplashScreen.scale-100.png" />
     <Image Include="Assets\LightGray.png" />

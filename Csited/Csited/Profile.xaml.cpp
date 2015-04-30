@@ -28,7 +28,6 @@ using namespace Windows::Storage;
 //Added
 using namespace concurrency;
 #include "Common\SuspensionManager.h"
-#define filename "sampleFile.txt"
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 Profile::Profile()
@@ -42,6 +41,8 @@ Profile::Profile()
 	SetValue(_navigationHelperProperty, navigationHelper);
 	navigationHelper->LoadState += ref new Common::LoadStateEventHandler(this, &Profile::LoadState);
 	navigationHelper->SaveState += ref new Common::SaveStateEventHandler(this, &Profile::SaveState);
+
+	Application::Current->Suspending += ref new SuspendingEventHandler(this, &Profile::OnSuspending);
 
 
 
@@ -86,6 +87,51 @@ Common::NavigationHelper^ Profile::NavigationHelper::get()
 void Profile::OnNavigatedTo(NavigationEventArgs^ e)
 {
 	NavigationHelper->OnNavigatedTo(e);
+	auto settings = ApplicationData::Current->LocalSettings->Values;
+
+	if (settings->HasKey("nameUser"))
+		nameUser->Text = safe_cast<String^>(settings->Lookup("nameUser"));
+	if (settings->HasKey("fechaNacimiento"))
+		fechaNacimiento->Text = safe_cast<String^>(settings->Lookup("fechaNacimiento"));
+	if (settings->HasKey("ciudad"))
+		ciudad->Text = safe_cast<String^>(settings->Lookup("ciudad"));
+	if (settings->HasKey("email"))
+		email->Text = safe_cast<String^>(settings->Lookup("email"));
+	if (settings->HasKey("fechaCompra"))
+		fechaCompra->Text = safe_cast<String^>(settings->Lookup("fechaCompra"));
+
+	if (settings->HasKey("mruToken"))
+	{
+		Object^ value = settings->Lookup("mruToken");
+		if (value != nullptr)
+		{
+			mruToken = value->ToString();
+
+			// Open the file via the token that you stored when adding this file into the MRU list::
+			create_task(Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->GetFileAsync(mruToken))
+				.then([this](Windows::Storage::StorageFile^ file)
+			{
+				if (file != nullptr)
+				{
+					// Open a stream for the selected file->
+					//  Windows.Storage->Streams.IRandomAccessStream fileStream =
+					create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
+						.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+					{
+						// Set the image source to a bitmap.
+						auto bitmapImage =
+							ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
+
+						bitmapImage->SetSource(fileStream);
+						displayImage->Source = bitmapImage;
+
+						// Set the data context for the page
+						this->DataContext = file;
+					});
+				}
+			});
+		}
+	}
 }
 
 void Profile::OnNavigatedFrom(NavigationEventArgs^ e)
@@ -113,79 +159,79 @@ void Profile::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 	(void) e;	// Unused parameter
 
 
-	create_task(localFolder->GetFileAsync(filename)).then([this](StorageFile^ file)
-	{
-		return FileIO::ReadTextAsync(file);
-	}).then([this](task<String^> previousTask)
-	{
-		try
-		{
-			
-			mruToken = previousTask.get();
-			if (mruToken != nullptr){
-				//	 Open the file via the token that you stored when adding this file into the MRU list::
-				create_task(Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->GetFileAsync(mruToken))
-					.then([this](Windows::Storage::StorageFile^ file)
-				{
-					if (file != nullptr)
-					{
-						// Open a stream for the selected file->
-						//  Windows.Storage->Streams.IRandomAccessStream fileStream =
-						create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
-							.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
-						{
-							// Set the image source to a bitmap.
-							auto bitmapImage =
-								ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
-
-							bitmapImage->SetSource(fileStream);
-							displayImage->ImageSource = bitmapImage;
-
-							// Set the data context for the page
-							this->DataContext = file;
-						});
-					}
-				});
-			}
-		}
-		catch (...)
-		{
-			
-		}
-	});
-
-	//if (e->PageState != nullptr && e->PageState->HasKey("mruToken"))
+	//create_task(localFolder->GetFileAsync(filename)).then([this](StorageFile^ file)
 	//{
-	//	Object^ value = e->PageState->Lookup("mruToken");
-	//	if (value != nullptr)
+	//	return FileIO::ReadTextAsync(file);
+	//}).then([this](task<String^> previousTask)
+	//{
+	//	try
 	//	{
-	//		mruToken = value->ToString();
-
-	//		// Open the file via the token that you stored when adding this file into the MRU list::
-	//		create_task(Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->GetFileAsync(mruToken))
-	//			.then([this](Windows::Storage::StorageFile^ file)
-	//		{
-	//			if (file != nullptr)
+	//		
+	//		mruToken = previousTask.get();
+	//		if (mruToken != nullptr){
+	//			//	 Open the file via the token that you stored when adding this file into the MRU list::
+	//			create_task(Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->GetFileAsync(mruToken))
+	//				.then([this](Windows::Storage::StorageFile^ file)
 	//			{
-	//				// Open a stream for the selected file->
-	//				//  Windows.Storage->Streams.IRandomAccessStream fileStream =
-	//				create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
-	//					.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+	//				if (file != nullptr)
 	//				{
-	//					// Set the image source to a bitmap.
-	//					auto bitmapImage =
-	//						ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
+	//					// Open a stream for the selected file->
+	//					//  Windows.Storage->Streams.IRandomAccessStream fileStream =
+	//					create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
+	//						.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+	//					{
+	//						// Set the image source to a bitmap.
+	//						auto bitmapImage =
+	//							ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
 
-	//					bitmapImage->SetSource(fileStream);
-	//					displayImage->Source = bitmapImage;
+	//						bitmapImage->SetSource(fileStream);
+	//						displayImage->Source = bitmapImage;
 
-	//					// Set the data context for the page
-	//					this->DataContext = file;
-	//				});
-	//			}
-	//		});
+	//						// Set the data context for the page
+	//						this->DataContext = file;
+	//					});
+	//				}
+	//			});
+	//		}
 	//	}
-	//}
+	//	catch (...)
+	//	{
+	//		
+	//	}
+	//});
+
+	if (e->PageState != nullptr && e->PageState->HasKey("mruToken"))
+	{
+		Object^ value = e->PageState->Lookup("mruToken");
+		if (value != nullptr)
+		{
+			mruToken = value->ToString();
+
+			// Open the file via the token that you stored when adding this file into the MRU list::
+			create_task(Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->GetFileAsync(mruToken))
+				.then([this](Windows::Storage::StorageFile^ file)
+			{
+				if (file != nullptr)
+				{
+					// Open a stream for the selected file->
+					//  Windows.Storage->Streams.IRandomAccessStream fileStream =
+					create_task(file->OpenAsync(Windows::Storage::FileAccessMode::Read))
+						.then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+					{
+						// Set the image source to a bitmap.
+						auto bitmapImage =
+							ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
+
+						bitmapImage->SetSource(fileStream);
+						displayImage->Source = bitmapImage;
+
+						// Set the data context for the page
+						this->DataContext = file;
+					});
+				}
+			});
+		}
+	}
 }
 
 /// <summary>
@@ -197,54 +243,23 @@ void Profile::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 /// <param name="e">Event data that provides an empty dictionary to be populated with
 /// serializable state.</param>
 void Profile::SaveState(Object^ sender, Common::SaveStateEventArgs^ e){
-	//(void) sender;	// Unused parameter
-	//(void) e; // Unused parameter
+	(void)sender;	// Unused parameter
+	(void)e; // Unused parameter
 
+/*	if (mruToken != nullptr && !mruToken->IsEmpty())
+	{
+		e->PageState->Insert("mruToken", mruToken);
+	}*/
+	ApplicationData::Current->LocalSettings->Values->Insert("nameUser", nameUser->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("fechaNacimiento", fechaNacimiento->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("ciudad", ciudad->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("email", email->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("fechaCompra", fechaCompra->Text);
 	if (mruToken != nullptr && !mruToken->IsEmpty())
 	{
-		//e->PageState->Insert("mruToken", mruToken);
-
-		//Added
-		create_task(localFolder->CreateFileAsync(filename, CreationCollisionOption::ReplaceExisting)).then(
-			[this](StorageFile^ file)
-		{
-			return FileIO::WriteTextAsync(file, mruToken);
-		}).then([this](task<void> previousTask)
-		{
-			try
-			{
-				previousTask.get();
-			}
-			catch (Platform::Exception^)
-			{
-			}
-
-		});
+		ApplicationData::Current->LocalSettings->Values->Insert("mruToken", mruToken);
 	}
-}
 
-void Profile::Guardar(){
-	if (mruToken != nullptr && !mruToken->IsEmpty())
-	{
-		//e->PageState->Insert("mruToken", mruToken);
-
-		//Added
-		create_task(localFolder->CreateFileAsync(filename, CreationCollisionOption::ReplaceExisting)).then(
-			[this](StorageFile^ file)
-		{
-			return FileIO::WriteTextAsync(file, mruToken);
-		}).then([this](task<void> previousTask)
-		{
-			try
-			{
-				previousTask.get();
-			}
-			catch (Platform::Exception^)
-			{
-			}
-
-		});
-	}
 }
 
 
@@ -260,6 +275,8 @@ void Csited::Profile::GetPhotoDoubleTapped(Platform::Object^ sender, Windows::UI
 	openPicker->FileTypeFilter->Append(".png");
 	openPicker->FileTypeFilter->Append(".jpeg");
 	openPicker->FileTypeFilter->Append(".jpg");
+
+	// All this work will be done asynchronously on a background thread:
 
 	// Open the file picker.
 	create_task(openPicker->PickSingleFileAsync()).then(
@@ -279,17 +296,30 @@ void Csited::Profile::GetPhotoDoubleTapped(Platform::Object^ sender, Windows::UI
 					ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
 
 				bitmapImage->SetSource(fileStream);
-				displayImage->ImageSource = bitmapImage;
+				displayImage->Source = bitmapImage;
 				this->DataContext = file;
 			}).then([this, file]()
 			{
 				// Add picked file to MostRecentlyUsedList.
 				mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
-				Guardar();
 			});
-			;
-			
-		}});
+		}
+	});
+
 
 
 }
+void Profile::OnSuspending(Object^ sender, Windows::ApplicationModel::SuspendingEventArgs^ e){
+
+	ApplicationData::Current->LocalSettings->Values->Insert("nameUser", nameUser->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("fechaNacimiento", fechaNacimiento->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("ciudad", ciudad->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("email", email->Text);
+	ApplicationData::Current->LocalSettings->Values->Insert("fechaCompra", fechaCompra->Text);
+	if (mruToken != nullptr && !mruToken->IsEmpty())
+	{
+		ApplicationData::Current->LocalSettings->Values->Insert("mruToken", mruToken);
+	}
+	
+}
+

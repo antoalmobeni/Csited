@@ -27,12 +27,12 @@ MainPage^ MainPage::Current = nullptr;
 MainPage::MainPage()
 {
 	InitializeComponent();
+	
 	SetValue(_defaultViewModelProperty, ref new Map<String^,Object^>(std::less<String^>()));
 	auto navigationHelper = ref new Common::NavigationHelper(this);
 	SetValue(_navigationHelperProperty, navigationHelper);
 	navigationHelper->LoadState += ref new Common::LoadStateEventHandler(this, &MainPage::LoadState);
 	navigationHelper->SaveState += ref new Common::SaveStateEventHandler(this, &MainPage::SaveState);
-
 	// This is a static public property that allows downstream pages to get a handle to the MainPage instance
 	// in order to call methods that are in this class.
 	MainPage::Current = this;
@@ -87,6 +87,10 @@ void MainPage::OnNavigatedTo(NavigationEventArgs^ e)
 		TextBlock^ textBlock = ref new TextBlock();
 		Button^ button = ref new Button();
 		ListBoxItem^ item = ref new ListBoxItem();
+		StackPanel^ aux = ref new StackPanel();
+		Image^ im = ref new Image();
+		im->Source =s._pathImage;
+
 		auto style = App::Current->Resources->Lookup("ListItemTextStyle");
 		auto style2 = App::Current->Resources->Lookup("ListItemButtonStyle");
 		
@@ -94,13 +98,13 @@ void MainPage::OnNavigatedTo(NavigationEventArgs^ e)
 		textBlock->Text = s.Title;
 		textBlock->Style = safe_cast<Windows::UI::Xaml::Style ^>(style);
 		
-		button->Content = (i++).ToString() + ") " + s.Title;
+		button->Content = aux;
 		button->Style = safe_cast<Windows::UI::Xaml::Style ^>(style2);
 		
 
 
 		item->Name = s.ClassName;
-		item->Content = textBlock;
+		item->Content = button;
 		itemCollection->Append(item);
 	}
 

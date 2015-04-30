@@ -8,6 +8,7 @@
     xmlns:common="using:Csited.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d"
    >
 
@@ -28,22 +29,65 @@
             <RowDefinition Height="177*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1000"/>
-            <ColumnDefinition Width="1000"/>
+            <ColumnDefinition Width="922"/>
+            <ColumnDefinition Width="1078"/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="#29bdef" HorizontalAlignment="Left" Height="128" Margin="39,39,0,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="1168" Grid.ColumnSpan="2"/>
-        <Border BorderBrush="#a9dcf8" BorderThickness="15" HorizontalAlignment="Left" Height="415" Margin="39,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="846"/>
+        <Border Background="#29bdef" HorizontalAlignment="Left" Height="138" Margin="39,0,0,0" Grid.Row="2"  Grid.Column="0" VerticalAlignment="Top" Width="846">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
 
-        <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Left" Height="415" Margin="938,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="269" Background="#a9dcf8" Grid.ColumnSpan="2">
-            <!--<Image x:Name="displayImage" Source="Assets/csited.jpg" DoubleTapped="GetPhotoDoubleTapped" Stretch="Uniform" VerticalAlignment="Center" Width="100" Height="100">-->
-            <Ellipse>
-                <Ellipse.Fill>
-                    <ImageBrush x:Name="displayImage" ImageSource="csited.png"/>
-                </Ellipse.Fill>
-            </Ellipse>
+                <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Tus productos" FontSize="22" Margin="34,10,0,0" Foreground="White"/>
+                <StackPanel x:Name="tusProductos" Grid.Row="1" Margin="81,0,0,0">
+                    <TextBlock Text="Ascension" FontSize="18" Foreground="White" />
+                </StackPanel>
+            </Grid>
         </Border>
-        
+        <Border BorderBrush="#a9dcf8" BorderThickness="15" HorizontalAlignment="Left" Height="415" Margin="39,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="846">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Text="Datos de usuario " FontSize="22" Height="180" Margin="15"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Text="Nombre " FontSize="18" Margin="113,10,107,10"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Text="Fecha de nacimiento " FontSize="18" Margin="113,10,0,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" TextWrapping="Wrap" Text="Ciudad " FontSize="18" Margin="113,10,107,10"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" TextWrapping="Wrap" Text="Mail " FontSize="18" Margin="113,10,107,10"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" Text="Compra de Ascension " FontSize="18" Margin="113,10,0,0"/>
+
+
+                <TextBox x:Name="nameUser" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="Nombre " FontSize="18" Margin="113,0,0,18"/>
+                <TextBox x:Name="fechaNacimiento"  Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="Fecha de nacimiento " FontSize="18" Margin="113,0,0,10"/>
+                <TextBox x:Name="ciudad" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Ciudad " FontSize="18" Margin="113,0,0,18"/>
+                <TextBox x:Name="email"  Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="" FontSize="18" Margin="113,8,0,10" InputScope="EmailNameOrAddress"/>
+                <TextBox x:Name="fechaCompra"  Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="Compra de Ascension " FontSize="18" Margin="113,0,0,10" InputScope="DateMonthNumber"/>
+            </Grid>
+
+        </Border>
+
+        <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Left" Height="415" Margin="1,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="269" Background="#a9dcf8" Grid.Column="1">
+            <Image x:Name="displayImage" Source="Assets/csited.jpg" DoubleTapped="GetPhotoDoubleTapped" Stretch="Uniform" VerticalAlignment="Center" Height="216" Margin="9,40,9,157"/>
+
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="42,309,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding nameUser}" VerticalAlignment="Top"  Height="34" Width="184" FontSize="20" Grid.Column="1" />
+        <Border  BorderThickness="10" BorderBrush="#a9dcf8" Grid.Column="1" HorizontalAlignment="Left" Height="138" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="260">
+            <Image Source="Assets/mapa.jpeg" />
+        </Border>
+
 
     </Grid>
 </Page>

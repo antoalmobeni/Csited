@@ -128,5 +128,59 @@
     <Image Include="Assets\Teclado-Cuadro-Azul.jpg">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\mapa.jpeg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Contenido.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Dispositivo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Entornos.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Eventos.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Csited-150.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Csited-310.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Dispositivo-asociado-Añadir.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Dispositivo-asociado-Impresora.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Dispositivo-asociado-Maletin.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Dispositivo-asociado-Raton.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Dispositivo-asociado-Teclado.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Icono-Mas-Blanco.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Perfil.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\RW1-1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\RW1-5.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Sincronizacion.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Soporte.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
 </Project>

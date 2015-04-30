@@ -9,7 +9,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    RequestedTheme="Light">
+    RequestedTheme="Light"
+    NavigationCacheMode="Enabled">
 
     <Page.Resources>
         <!-- Collection of items displayed by this page -->
@@ -18,7 +19,7 @@
         Source="{Binding Items}"/>
 
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-      
+
     </Page.Resources>
 
     <!--
@@ -62,16 +63,16 @@
             </GridView.ItemTemplate>
         </GridView>
 
-     
+
         <VariableSizedWrapGrid x:Name="pizarra" Orientation="Horizontal" MaximumRowsOrColumns="3" Grid.Row="1" >
-           
+
         </VariableSizedWrapGrid>
         <Grid Grid.Row="1">
-            <Button x:ConnectionId='1'  Background="#FFA9DCF8" Height="184" Width="241"                      Margin="944,386,0,58">
+            <Button x:ConnectionId='1'  Background="#FFA9DCF8" Height="197" Width="250"                      Margin="851,292,0,139">
                 <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="174" Width="223">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
-                        <RowDefinition Height="1*"/>                   
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Image HorizontalAlignment="Center" Margin="46,10,59,1" VerticalAlignment="Center" Grid.Row="0" Source="Assets/csited.jpg" RenderTransformOrigin="-10.003,0.471" Height="89" Width="118"/>
                     <TextBlock HorizontalAlignment="Left" Margin="83,32,0,22" Grid.Row="1" TextWrapping="Wrap" Text="Añadir" VerticalAlignment="Center" FontSize="18"/>
@@ -79,7 +80,7 @@
             </Button>
 
         </Grid>
-        
+
     </Grid>
 </Page>
 
