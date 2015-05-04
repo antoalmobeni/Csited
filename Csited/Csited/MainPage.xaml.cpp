@@ -83,28 +83,39 @@ void MainPage::OnNavigatedTo(NavigationEventArgs^ e)
 	int i = 1;
 	for each(Scenario s in MainPage::Current->scenarios)
 	{
+		//Searching styles
+		auto style = App::Current->Resources->Lookup("TextScenario");
+		auto styleStack = App::Current->Resources->Lookup("StackPanelScenario");
+		auto styleImage = App::Current->Resources->Lookup("ImageScenario");
+		auto styleBorder = App::Current->Resources->Lookup("BorderScenario");
 		// Create a textBlock to hold the content and apply the ListItemTextStyle from Styles.xaml
 		TextBlock^ textBlock = ref new TextBlock();
-		Button^ button = ref new Button();
 		ListBoxItem^ item = ref new ListBoxItem();
 		StackPanel^ aux = ref new StackPanel();
 		Image^ im = ref new Image();
-		im->Source =s._pathImage;
-
-		auto style = App::Current->Resources->Lookup("ListItemTextStyle");
-		auto style2 = App::Current->Resources->Lookup("ListItemButtonStyle");
+		Border^ border = ref new Border();
 		
+		auto bitmapImage = ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
+		bitmapImage->UriSource = ref new Uri (s._pathImage );		
+		im->Source = bitmapImage;
+		im->Style = safe_cast<Windows::UI::Xaml::Style ^>(styleImage);
 
 		textBlock->Text = s.Title;
 		textBlock->Style = safe_cast<Windows::UI::Xaml::Style ^>(style);
 		
-		button->Content = aux;
-		button->Style = safe_cast<Windows::UI::Xaml::Style ^>(style2);
 		
+		aux->Children->Append(im);
+		aux->Children->Append(textBlock);
 
+		aux->Style = safe_cast<Windows::UI::Xaml::Style ^>(styleStack);
 
+	
+	
+		border->Width = 235;
+		border->Child = aux;
+		border->Style = safe_cast<Windows::UI::Xaml::Style ^>(styleBorder);
 		item->Name = s.ClassName;
-		item->Content = button;
+		item->Content = border;
 		itemCollection->Append(item);
 	}
 

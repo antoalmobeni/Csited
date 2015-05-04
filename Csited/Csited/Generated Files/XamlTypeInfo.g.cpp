@@ -11,14 +11,12 @@
 
 #include "Environment.xaml.h"
 #include "MainPage.xaml.h"
-#include "MyUserControl.xaml.h"
 #include "App.xaml.h"
 #include "Profile.xaml.h"
 #include "Sync.xaml.h"
 
 #include "Environment.g.hpp"
 #include "MainPage.g.hpp"
-#include "MyUserControl.g.hpp"
 #include "App.g.hpp"
 #include "Profile.g.hpp"
 #include "Sync.g.hpp"
@@ -148,19 +146,6 @@
             };
         userType->AddMemberName(L"NavigationHelper");
         userType->AddMemberName(L"DefaultViewModel");
-        userType->SetIsLocalType();
-        return userType;
-    }
-
-    if (typeName == L"Csited.MyUserControl")
-    {
-        ::XamlTypeInfo::InfoProvider::XamlUserType^ userType = ref new ::XamlTypeInfo::InfoProvider::XamlUserType(this, typeName, GetXamlTypeByName(L"Windows.UI.Xaml.Controls.UserControl"));
-        userType->KindOfType = ::Windows::UI::Xaml::Interop::TypeKind::Custom;
-        userType->Activator =
-            []() -> Platform::Object^ 
-            {
-                return ref new ::Csited::MyUserControl(); 
-            };
         userType->SetIsLocalType();
         return userType;
     }

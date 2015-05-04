@@ -34,30 +34,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel VerticalAlignment="Top" Grid.Row="0" Orientation="Vertical" Height="115">
-                <Image Source="Assets/csited.jpg" Stretch="Fill" Height="122" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233"  Margin="10,0,0,0" />
+                <Image  Source="Assets/csited.jpg" Stretch="UniformToFill" Height="112" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="161" Margin="10,0,0,0"   />
             </StackPanel>
-            <ListBox x:Name="ScenarioControl" Grid.Row="1" SelectionChanged="ScenarioControl_SelectionChanged"
+            <ListBox Style="{StaticResource ScenarioListBoxStyle}" ItemContainerStyle = "{StaticResource myLBStyle}" x:Name="ScenarioControl" Grid.Row="1" SelectionChanged="ScenarioControl_SelectionChanged"
                      SelectionMode="Single" HorizontalAlignment="Left"
-                     VerticalAlignment="Top" Margin="10,100,10,110" RequestedTheme="Light" Background="White"  >
+                     VerticalAlignment="Top" RequestedTheme="Light" Background="White"  >
+              
 
-                <Button Width="220">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="Assets/Perfil.png" Stretch="None" Height="31" Width="20"/>
-                        <TextBlock Text="Profile" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                    </StackPanel>
-                </Button>
-                <Button Width="224">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="Assets/csited.jpg" Stretch="UniformToFill" Height="40" Width="48" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Profile" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                    </StackPanel>
-                </Button>
-                <Button Width="224">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="Assets/csited.jpg" Stretch="UniformToFill" Height="40" Width="48"/>
-                        <TextBlock Text="Profile" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                    </StackPanel>
-                </Button>
+                
             </ListBox>
         </Grid>
 

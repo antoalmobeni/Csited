@@ -8,9 +8,9 @@ Platform::Array<Scenario>^ MainPage::scenariosInner = ref new Platform::Array<Sc
 {
 	// The format here is the following:
 	//     { "Description for the sample", "Fully quaified name for the class that implements the scenario" }
-	{ "Perfil", "Csited.Profile", "Assets/csited.jpg" },
-	{ "Sincronización", "Csited.Sync","Assets/csited.jpg" },
-	{ "Entornos", "Csited.Environment", "Assets/csited.jpg") }
+	{ "Perfil", "Csited.Profile", "ms-appx:///Assets/perfil.png" },
+	{ "Sincronización", "Csited.Sync","ms-appx:///Assets/Sincronizacion.png" },
+	{ "Entornos", "Csited.Environment", "ms-appx:///Assets/Entornos.png" }
 	
 
 };
