@@ -80,10 +80,17 @@
         </Border>
 
         <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Left" Height="415" Margin="1,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="269" Background="#a9dcf8" Grid.Column="1">
-            <Image x:ConnectionId='1' x:Name="displayImage" Source="Assets/csited.jpg"                                     Stretch="Uniform" VerticalAlignment="Center" Height="216" Margin="9,40,9,157"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Image x:ConnectionId='1' Grid.Row="0" x:Name="displayImage" Source="Assets/csited.jpg"                                     Stretch="Uniform" VerticalAlignment="Center" Height="240" Margin="9,10,9,0"/>
+                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="42,309,0,0" TextWrapping="Wrap" Text="{Binding nameUser}" VerticalAlignment="Top"  Height="34" Width="184" FontSize="20" Grid.Column="1" />
 
+            </Grid>
         </Border>
-        <TextBlock HorizontalAlignment="Left" Margin="42,309,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding nameUser}" VerticalAlignment="Top"  Height="34" Width="184" FontSize="20" Grid.Column="1" />
+        <TextBlock HorizontalAlignment="Left" Margin="42,309,0,0" Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=Text, ElementName=nameUser}" VerticalAlignment="Top"  Height="34" Width="184" FontSize="20" Grid.Column="1" />
         <Border  BorderThickness="10" BorderBrush="#a9dcf8" Grid.Column="1" HorizontalAlignment="Left" Height="138" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="260">
             <Image Source="Assets/mapa.jpeg" />
         </Border>
