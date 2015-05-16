@@ -123,8 +123,8 @@ void Profile::OnNavigatedTo(NavigationEventArgs^ e)
 							ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
 
 						bitmapImage->SetSource(fileStream);
-						displayImage->Source = bitmapImage;
-
+						
+						displayImage->ImageSource = bitmapImage;
 						// Set the data context for the page
 						this->DataContext = file;
 					});
@@ -223,7 +223,7 @@ void Profile::LoadState(Object^ sender, Common::LoadStateEventArgs^ e)
 							ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
 
 						bitmapImage->SetSource(fileStream);
-						displayImage->Source = bitmapImage;
+						displayImage->ImageSource = bitmapImage;
 
 						// Set the data context for the page
 						this->DataContext = file;
@@ -296,7 +296,7 @@ void Csited::Profile::GetPhotoDoubleTapped(Platform::Object^ sender, Windows::UI
 					ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
 
 				bitmapImage->SetSource(fileStream);
-				displayImage->Source = bitmapImage;
+				displayImage->ImageSource = bitmapImage;
 				this->DataContext = file;
 			}).then([this, file]()
 			{
@@ -321,5 +321,52 @@ void Profile::OnSuspending(Object^ sender, Windows::ApplicationModel::Suspending
 		ApplicationData::Current->LocalSettings->Values->Insert("mruToken", mruToken);
 	}
 	
+}
+
+
+
+void Csited::Profile::cambiarImage(Platform::Object^ sender, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^ e)
+{
+	auto openPicker = ref new Windows::Storage::Pickers::FileOpenPicker();
+	openPicker->SuggestedStartLocation = Windows::Storage::Pickers::PickerLocationId::PicturesLibrary;
+	openPicker->ViewMode = Windows::Storage::Pickers::PickerViewMode::Thumbnail;
+
+	// Filter to include a sample subset of file types.
+	openPicker->FileTypeFilter->Clear();
+	openPicker->FileTypeFilter->Append(".bmp");
+	openPicker->FileTypeFilter->Append(".png");
+	openPicker->FileTypeFilter->Append(".jpeg");
+	openPicker->FileTypeFilter->Append(".jpg");
+
+	// All this work will be done asynchronously on a background thread:
+
+	// Open the file picker.
+	create_task(openPicker->PickSingleFileAsync()).then(
+		[this](Windows::Storage::StorageFile^ file)
+	{
+		// file is null if user cancels the file picker.
+		if (file != nullptr)
+		{
+			// Open a stream for the selected file.
+			create_task([file]()
+			{
+				return file->OpenAsync(Windows::Storage::FileAccessMode::Read);
+			}).then([this, file](Windows::Storage::Streams::IRandomAccessStream^ fileStream)
+			{
+				// Set the image source to the selected bitmap.
+				Windows::UI::Xaml::Media::Imaging::BitmapImage^ bitmapImage =
+					ref new Windows::UI::Xaml::Media::Imaging::BitmapImage();
+
+				bitmapImage->SetSource(fileStream);
+				displayImage->ImageSource = bitmapImage;
+				this->DataContext = file;
+			}).then([this, file]()
+			{
+				// Add picked file to MostRecentlyUsedList.
+				mruToken = Windows::Storage::AccessCache::StorageApplicationPermissions::MostRecentlyUsedList->Add(file);
+			});
+		}
+	});
+
 }
 

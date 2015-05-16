@@ -11,8 +11,16 @@
 namespace Windows {
     namespace UI {
         namespace Xaml {
+            namespace Media {
+                ref class ImageBrush;
+            }
+        }
+    }
+}
+namespace Windows {
+    namespace UI {
+        namespace Xaml {
             namespace Controls {
-                ref class Image;
                 ref class TextBox;
                 ref class StackPanel;
             }
@@ -32,7 +40,7 @@ namespace Csited
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::Image^ displayImage;
+        private: ::Windows::UI::Xaml::Media::ImageBrush^ displayImage;
         private: ::Windows::UI::Xaml::Controls::TextBox^ nameUser;
         private: ::Windows::UI::Xaml::Controls::TextBox^ fechaNacimiento;
         private: ::Windows::UI::Xaml::Controls::TextBox^ ciudad;

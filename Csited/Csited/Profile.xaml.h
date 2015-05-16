@@ -57,5 +57,6 @@ namespace Csited
 	
 
 		void OnSuspending(Object^ sender, Windows::ApplicationModel::SuspendingEventArgs^ e);
+		void cambiarImage(Platform::Object^ sender, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^ e);
 	};
 }

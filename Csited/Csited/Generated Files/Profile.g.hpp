@@ -22,8 +22,8 @@ void ::Csited::Profile::InitializeComponent()
     // Call LoadComponent on ms-appx:///Profile.xaml
     ::Windows::UI::Xaml::Application::LoadComponent(this, ref new ::Windows::Foundation::Uri(L"ms-appx:///Profile.xaml"), ::Windows::UI::Xaml::Controls::Primitives::ComponentResourceLocation::Application);
 
-    // Get the Image named 'displayImage'
-    displayImage = safe_cast<::Windows::UI::Xaml::Controls::Image^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"displayImage"));
+    // Get the ImageBrush named 'displayImage'
+    displayImage = safe_cast<::Windows::UI::Xaml::Media::ImageBrush^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"displayImage"));
     // Get the TextBox named 'nameUser'
     nameUser = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(static_cast<Windows::UI::Xaml::IFrameworkElement^>(this)->FindName(L"nameUser"));
     // Get the TextBox named 'fechaNacimiento'
@@ -44,7 +44,7 @@ void ::Csited::Profile::Connect(int connectionId, Platform::Object^ target)
     {
     case 1:
         (safe_cast<::Windows::UI::Xaml::UIElement^>(target))->DoubleTapped +=
-            ref new ::Windows::UI::Xaml::Input::DoubleTappedEventHandler(this, (void (::Csited::Profile::*)(Platform::Object^, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^))&Profile::GetPhotoDoubleTapped);
+            ref new ::Windows::UI::Xaml::Input::DoubleTappedEventHandler(this, (void (::Csited::Profile::*)(Platform::Object^, Windows::UI::Xaml::Input::DoubleTappedRoutedEventArgs^))&Profile::cambiarImage);
         break;
     }
     (void)connectionId; // Unused parameter
